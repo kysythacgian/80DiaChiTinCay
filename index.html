@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>80 Địa chỉ tin cậy - Phường Thanh Khê</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600&family=Noto+Serif:wght@600;700&display=swap" rel="stylesheet">
+<script src="chihoi.js"></script>
+<style>
+:root{
+  --green:#1B6B3A; --green-dark:#12482A; --leaf:#2E9E5B; --leaf-soft:#DDF1E4;
+  --gold:#C9A227; --mint:#F2FAF5; --ink:#142319; --muted:#5E7566; --line:#CFE5D7;
+}
+*{box-sizing:border-box}
+body{
+  margin:0; min-height:100vh; padding:28px 16px 48px;
+  font-family:'Be Vietnam Pro',system-ui,sans-serif; color:var(--ink);
+  background:
+    radial-gradient(900px 420px at 85% -10%, #BFE6CD 0%, transparent 60%),
+    radial-gradient(700px 380px at -10% 10%, #E4F3C8 0%, transparent 55%),
+    var(--mint);
+}
+.container{
+  max-width:760px; margin:0 auto; background:#fff; border-radius:22px;
+  box-shadow:0 18px 50px rgba(18,72,42,.16); overflow:hidden;
+}
+.head{
+  background:linear-gradient(135deg,#EAF7EF,#DDF1E4 55%,#CFEBD9);
+  color:var(--green); text-align:center; padding:22px 24px 24px;
+  border-bottom:3px solid var(--leaf); border-radius:0 0 6px 6px;
+}
+.logo img{width:88px;height:auto;display:block;margin:0 auto 12px;object-fit:contain;filter:drop-shadow(0 3px 7px rgba(18,72,42,.18))}
+h2{font-family:'Noto Serif',serif;font-size:21px;line-height:1.35;margin:0 0 10px;letter-spacing:.2px;color:var(--green-dark)}
+h3{
+  display:inline-block;font-size:16px;font-weight:600;margin:0 auto;padding:9px 18px;max-width:100%;
+  color:var(--green-dark);background:#fff;border:1.5px solid var(--leaf);border-radius:999px;
+  letter-spacing:.2px;line-height:1.45;box-shadow:0 3px 10px rgba(18,72,42,.12);
+}
+form{padding:30px 30px 10px}
+.form-group{margin-bottom:18px}
+label,.lbl{display:block;font-weight:600;font-size:14.5px;margin-bottom:7px;color:var(--green)}
+.opt{font-weight:400;color:var(--muted);font-size:13px}
+input[type=text],input[type=password],select{
+  width:100%;padding:12px 14px;font:inherit;font-size:15.5px;color:var(--ink);
+  background:var(--mint);border:1.5px solid var(--line);border-radius:12px;transition:.2s;
+}
+select{appearance:none;-webkit-appearance:none;cursor:pointer;padding-right:40px;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%231B6B3A' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center}
+input:focus,select:focus{outline:none;border-color:var(--leaf);background:#fff;box-shadow:0 0 0 4px rgba(46,158,91,.18)}
+button{font:inherit;cursor:pointer;border:none;transition:.2s}
+.btn{width:100%;padding:13px;border-radius:12px;font-size:16.5px;font-weight:600}
+.btn-primary{background:linear-gradient(135deg,var(--leaf),var(--green));color:#fff;box-shadow:0 8px 18px rgba(46,158,91,.35);margin-top:6px}
+.btn-primary:hover{transform:translateY(-1px);box-shadow:0 10px 22px rgba(46,158,91,.45)}
+.btn-primary:disabled{background:#AFC2B6;box-shadow:none;cursor:not-allowed;transform:none}
+.btn-admin{background:#fff;color:var(--green);border:1.5px solid var(--green);margin:12px 30px 28px;width:calc(100% - 60px)}
+.btn-admin:hover{background:var(--green);color:#fff}
+:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+#message{display:none;margin:0 30px 18px;padding:13px 15px;border-radius:12px;text-align:center;font-weight:500;font-size:15px}
+.success{background:#E5F5EA;color:#17603A;border:1px solid #BFE3CC}
+.error{background:#FCE4E8;color:#8E1F3A;border:1px solid #F3BFCB}
+
+/* Thành viên */
+.member-row{display:flex;gap:8px;align-items:center;margin-bottom:10px}
+.member-row input{flex:1;min-width:0}
+.btn-del{flex:none;width:42px;height:46px;border-radius:12px;background:#FCE4E8;color:#B3243F;font-size:18px;font-weight:600;padding:0}
+.btn-del:hover{background:#F6CBD4}
+.btn-add{width:100%;padding:10px;border-radius:12px;background:var(--leaf-soft);color:var(--green-dark);font-weight:600;border:1.5px dashed var(--leaf)}
+.btn-add:hover{background:#C9E9D5}
+
+/* Quản trị */
+.overlay{position:fixed;inset:0;background:rgba(14,35,22,.55);display:none;align-items:center;justify-content:center;padding:16px;z-index:10;backdrop-filter:blur(3px)}
+.overlay.open{display:flex}
+.modal{background:#fff;border-radius:18px;padding:26px;width:100%;max-width:380px;box-shadow:0 24px 60px rgba(0,0,0,.3)}
+.modal h4{font-family:'Noto Serif',serif;margin:0 0 6px;font-size:19px;color:var(--green)}
+.modal p{margin:0 0 16px;color:var(--muted);font-size:14px}
+.modal .row{display:flex;gap:10px;margin-top:14px}
+.modal .row button{flex:1;padding:11px;border-radius:10px;font-weight:600}
+.modal .btn-primary{margin-top:0;box-shadow:none}
+.btn-ghost{background:var(--leaf-soft);color:var(--green)}
+.btn-ghost:hover{background:#C9E9D5}
+.pw-wrap{position:relative}
+.pw-wrap input{padding-right:48px}
+.pw-toggle{position:absolute;top:50%;right:6px;transform:translateY(-50%);width:36px;height:36px;display:flex;align-items:center;justify-content:center;background:transparent;color:var(--muted);border-radius:8px;padding:0}
+.pw-toggle:hover{color:var(--green);background:var(--leaf-soft)}
+.pw-toggle svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.pw-toggle .eye-off{display:none}
+.pw-toggle.on .eye{display:none}
+.pw-toggle.on .eye-off{display:block}
+.err-text{color:#B3243F;font-size:13.5px;margin-top:8px;min-height:18px}
+
+.admin{display:none;max-width:1000px;margin:24px auto 0;background:#fff;border-radius:22px;box-shadow:0 18px 50px rgba(18,72,42,.16);overflow:hidden}
+.admin.open{display:block}
+.admin-top{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;padding:18px 22px;background:var(--leaf-soft);border-bottom:3px solid var(--gold)}
+.admin-top h4{margin:0;font-family:'Noto Serif',serif;font-size:18px;color:var(--green-dark)}
+.admin-top small{display:block;color:var(--muted);font-size:13px;margin-top:2px}
+.tools{display:flex;gap:8px;flex-wrap:wrap}
+.tools button{padding:10px 16px;border-radius:10px;font-weight:600;font-size:14.5px}
+.btn-excel{background:#1F7A4D;color:#fff}.btn-excel:hover{background:#17623D}
+.btn-excel:disabled{background:#AFC2B6;cursor:not-allowed}
+.btn-outline{background:#fff;color:var(--green);border:1.5px solid var(--green)!important}
+.btn-outline:hover{background:var(--green);color:#fff}
+.table-wrap{overflow-x:auto;padding:0 6px 6px}
+table{border-collapse:collapse;width:100%;min-width:640px;font-size:14.5px}
+th{background:var(--green);color:#fff;text-align:center;padding:12px 14px;font-weight:600;position:sticky;top:0}
+th:first-child,td:first-child{text-align:center;width:60px}
+td{padding:11px 14px;border-bottom:1px solid var(--line);vertical-align:top;white-space:pre-line}
+tbody tr:nth-child(even){background:var(--mint)}
+tbody tr:hover{background:var(--leaf-soft)}
+.empty{padding:36px 20px;text-align:center;color:var(--muted)}
+@media(max-width:560px){form{padding:22px 18px 6px}.btn-admin{margin:12px 18px 22px;width:calc(100% - 36px)}#message{margin:0 18px 16px}h2{font-size:18px}h3{font-size:14.5px;padding:8px 14px}}
+</style>
+</head>
+<body>
+
+<div class="container">
+  <div class="head">
+    <div class="logo"><img src="icon.png" alt="Logo" onerror="this.style.display='none'"></div>
+    <h2>HỘI LIÊN HIỆP PHỤ NỮ PHƯỜNG THANH KHÊ</h2>
+    <h3>BẢNG TỔNG HỢP 80 ĐỊA CHỈ TIN CẬY PHƯỜNG THANH KHÊ</h3>
+  </div>
+
+  <form id="dataForm" onsubmit="handleFormSubmit(event)">
+    <div class="form-group">
+      <label for="chiHoi">Chi hội</label>
+      <select id="chiHoi" required></select>
+    </div>
+
+    <div class="form-group">
+      <span class="lbl">Tên, Chức vụ các thành viên Địa chỉ tin cậy</span>
+      <div id="memberList"></div>
+      <button type="button" class="btn-add" onclick="addMember()">+ Thêm thành viên</button>
+    </div>
+
+    <div class="form-group">
+      <label for="ghiChu">Ghi chú <span class="opt">(không bắt buộc)</span></label>
+      <input type="text" id="ghiChu" maxlength="300" autocomplete="off" placeholder="Nhập ghi chú nếu có...">
+    </div>
+
+    <button type="submit" id="btnSubmit" class="btn btn-primary">Gửi thông tin</button>
+  </form>
+
+  <button type="button" class="btn btn-admin" onclick="openLogin()">Truy cập quản trị</button>
+  <div id="message"></div>
+</div>
+
+<!-- Hộp nhập mật khẩu -->
+<div class="overlay" id="loginBox" onclick="if(event.target===this)closeLogin()">
+  <div class="modal" role="dialog" aria-labelledby="loginTitle">
+    <h4 id="loginTitle">Truy cập quản trị</h4>
+    <p>Nhập mật khẩu để xem bảng tổng hợp.</p>
+    <div class="pw-wrap">
+      <input type="password" id="adminPass" placeholder="Mật khẩu" autocomplete="current-password" onkeydown="if(event.key==='Enter')doLogin()">
+      <button type="button" class="pw-toggle" id="pwToggle" onclick="togglePass()" aria-label="Hiện mật khẩu" title="Hiện mật khẩu">
+        <svg class="eye" viewBox="0 0 24 24"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7S1 12 1 12z"/><circle cx="12" cy="12" r="3"/></svg>
+        <svg class="eye-off" viewBox="0 0 24 24"><path d="M17.94 17.94A10.9 10.9 0 0 1 12 19C5 19 1 12 1 12a18.5 18.5 0 0 1 5.06-5.94M9.9 4.24A10.9 10.9 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19M14.12 14.12a3 3 0 1 1-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/></svg>
+      </button>
+    </div>
+    <div class="err-text" id="loginErr"></div>
+    <div class="row">
+      <button type="button" class="btn-ghost" onclick="closeLogin()">Hủy</button>
+      <button type="button" class="btn-primary" id="btnLogin" onclick="doLogin()">Đăng nhập</button>
+    </div>
+  </div>
+</div>
+
+<!-- Bảng quản trị -->
+<section class="admin" id="adminPanel">
+  <div class="admin-top">
+    <div><h4>Bảng tổng hợp 80 Địa chỉ tin cậy</h4><small id="countText"></small></div>
+    <div class="tools">
+      <button type="button" class="btn-excel" id="btnExcel" onclick="downloadExcel()">Tải Excel</button>
+      <button type="button" class="btn-outline" onclick="loadList()">Làm mới</button>
+      <button type="button" class="btn-outline" onclick="logout()">Đóng</button>
+    </div>
+  </div>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Stt</th><th>Chi hội</th><th>Tên, Chức vụ các thành viên Địa chỉ tin cậy</th><th>Ghi chú</th></tr></thead>
+      <tbody id="tbody"></tbody>
+    </table>
+    <div class="empty" id="emptyText" style="display:none">Chưa có dữ liệu.</div>
+  </div>
+</section>
+
+<script>
+// Dán link Web App (đuôi /exec) của bạn vào đây
+const WEB_APP_URL = 'https://script.google.com/macros/s/AKfycby6Ns69_0vkXUGxobGQ7RU5G4tr19pwPZVaDSyJWqIdK_uD1vrqxAAsLIayYChRk1mF/exec';
+
+let adminPassword = '';
+let currentRows = [];
+
+function post(payload){
+  return fetch(WEB_APP_URL,{
+    method:'POST',
+    headers:{'Content-Type':'text/plain;charset=utf-8'},
+    body:JSON.stringify(payload)
+  }).then(r=>r.json());
+}
+
+createChiHoiSelect('chiHoi');
+
+/* ===== Thành viên (1 đến nhiều người) ===== */
+function addMember(){
+  const list=document.getElementById('memberList');
+  const n=list.children.length+1;
+  const row=document.createElement('div');
+  row.className='member-row';
+  row.innerHTML='<input type="text" class="m-input" maxlength="160" autocomplete="off" placeholder="Tên - Chức vụ (VD: Nguyễn Thị A - Chi hội trưởng)" aria-label="Thành viên '+n+'">'+
+    (n>1?'<button type="button" class="btn-del" onclick="removeMember(this)" aria-label="Xóa thành viên" title="Xóa">&times;</button>':'');
+  list.appendChild(row);
+  if(n>1) row.querySelector('input').focus();
+}
+function removeMember(btn){btn.closest('.member-row').remove();}
+function resetMembers(){document.getElementById('memberList').innerHTML='';addMember();}
+function collectMembers(){
+  return Array.from(document.querySelectorAll('#memberList .m-input'))
+    .map(i=>i.value.trim().replace(/\s+/g,' ')).filter(Boolean).join('\n');
+}
+addMember();
+
+function handleFormSubmit(e){
+  e.preventDefault();
+  const btn=document.getElementById('btnSubmit'), msg=document.getElementById('message');
+  btn.disabled=true; btn.textContent='Đang lưu dữ liệu...'; msg.style.display='none';
+  if(!collectMembers()){
+    msg.style.display='block'; msg.className='error';
+    msg.textContent='Vui lòng nhập ít nhất 1 thành viên (tên - chức vụ).';
+    btn.disabled=false; btn.textContent='Gửi thông tin'; return;
+  }
+  const formData={
+    chiHoi:document.getElementById('chiHoi').value,
+    thanhVien:collectMembers(),
+    ghiChu:document.getElementById('ghiChu').value.trim()
+  };
+  post(formData).then(data=>{
+    msg.style.display='block';
+    msg.className=data.success?'success':'error';
+    msg.textContent=data.message;
+    if(data.success){document.getElementById('dataForm').reset();resetMembers();}
+  }).catch(err=>{
+    msg.style.display='block'; msg.className='error';
+    msg.textContent='Lỗi kết nối mạng hoặc sai URL API!';
+    console.error(err);
+  }).finally(()=>{btn.disabled=false;btn.textContent='Gửi thông tin';});
+}
+
+/* ===== Quản trị ===== */
+function openLogin(){
+  document.getElementById('loginErr').textContent='';
+  document.getElementById('adminPass').value='';
+  document.getElementById('adminPass').type='password';
+  document.getElementById('pwToggle').classList.remove('on');
+  document.getElementById('loginBox').classList.add('open');
+  setTimeout(()=>document.getElementById('adminPass').focus(),50);
+}
+function closeLogin(){document.getElementById('loginBox').classList.remove('open')}
+
+function togglePass(){
+  const i=document.getElementById('adminPass'), b=document.getElementById('pwToggle');
+  const show=i.type==='password';
+  i.type=show?'text':'password';
+  b.classList.toggle('on',show);
+  const t=show?'Ẩn mật khẩu':'Hiện mật khẩu';
+  b.setAttribute('aria-label',t); b.title=t;
+  i.focus();
+}
+
+function doLogin(){
+  const pass=document.getElementById('adminPass').value;
+  const btn=document.getElementById('btnLogin'), err=document.getElementById('loginErr');
+  btn.disabled=true; btn.textContent='Đang kiểm tra...'; err.textContent='';
+  post({action:'list',password:pass}).then(data=>{
+    if(!data.success){err.textContent=data.message||'Mật khẩu không đúng!';return;}
+    adminPassword=pass; closeLogin(); renderRows(data.rows);
+    const panel=document.getElementById('adminPanel');
+    panel.classList.add('open'); panel.scrollIntoView({behavior:'smooth'});
+  }).catch(()=>{err.textContent='Không kết nối được máy chủ. Kiểm tra lại URL API.';})
+  .finally(()=>{btn.disabled=false;btn.textContent='Đăng nhập';});
+}
+
+function loadList(){
+  post({action:'list',password:adminPassword}).then(d=>{
+    if(d.success) renderRows(d.rows); else alert(d.message);
+  }).catch(()=>alert('Không tải được dữ liệu.'));
+}
+
+function esc(s){return String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]))}
+
+function renderRows(rows){
+  currentRows=rows||[];
+  document.getElementById('tbody').innerHTML=currentRows.map(r=>
+    '<tr>'+r.map(c=>'<td>'+esc(c)+'</td>').join('')+'</tr>').join('');
+  document.getElementById('emptyText').style.display=currentRows.length?'none':'block';
+  document.getElementById('btnExcel').disabled=!currentRows.length;
+  document.getElementById('countText').textContent=currentRows.length+' dòng đã gửi';
+}
+
+/* ===== Tạo file .xlsx thuần JavaScript (không cần thư viện ngoài) ===== */
+const CRC_TABLE=(()=>{const t=[];for(let n=0;n<256;n++){let c=n;for(let k=0;k<8;k++)c=c&1?0xEDB88320^(c>>>1):c>>>1;t[n]=c>>>0}return t})();
+function crc32(b){let c=0xFFFFFFFF;for(let i=0;i<b.length;i++)c=CRC_TABLE[(c^b[i])&0xFF]^(c>>>8);return(c^0xFFFFFFFF)>>>0}
+
+function zipStore(files){
+  const enc=new TextEncoder(), parts=[], central=[]; let offset=0;
+  const u16=v=>[v&255,(v>>8)&255], u32=v=>[v&255,(v>>8)&255,(v>>16)&255,(v>>>24)&255];
+  files.forEach(f=>{
+    const name=enc.encode(f.name), data=enc.encode(f.data), crc=crc32(data);
+    const head=new Uint8Array([0x50,0x4B,3,4,...u16(20),...u16(0x0800),...u16(0),...u16(0),...u16(0x21),
+      ...u32(crc),...u32(data.length),...u32(data.length),...u16(name.length),...u16(0)]);
+    parts.push(head,name,data);
+    central.push({name,crc,size:data.length,offset});
+    offset+=head.length+name.length+data.length;
+  });
+  const cdStart=offset; let cdSize=0;
+  central.forEach(c=>{
+    const h=new Uint8Array([0x50,0x4B,1,2,...u16(20),...u16(20),...u16(0x0800),...u16(0),...u16(0),...u16(0x21),
+      ...u32(c.crc),...u32(c.size),...u32(c.size),...u16(c.name.length),...u16(0),...u16(0),...u16(0),...u16(0),...u32(0),...u32(c.offset)]);
+    parts.push(h,c.name); cdSize+=h.length+c.name.length;
+  });
+  parts.push(new Uint8Array([0x50,0x4B,5,6,...u16(0),...u16(0),...u16(central.length),...u16(central.length),...u32(cdSize),...u32(cdStart),...u16(0)]));
+  const total=parts.reduce((s,p)=>s+p.length,0), out=new Uint8Array(total); let pos=0;
+  parts.forEach(p=>{out.set(p,pos);pos+=p.length}); return out;
+}
+
+function xmlEsc(s){return String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])).replace(/[\u0000-\u0008\u000B\u000C\u000E-\u001F]/g,'')}
+
+function buildXlsx(headers,rows){
+  // Màu theo cột (xanh): [màu tiêu đề, màu nền dữ liệu]
+  const colors=[['14532D','E6F4EA'],['1B6B3A','EEF8F1'],['237A45','E6F4EA'],['2E8B57','EEF8F1']];
+  const aligns=['center','center','left','left'];
+  const colL=['A','B','C','D'];
+  const widths=headers.map((h,i)=>{
+    const longest=Math.max(...rows.map(r=>Math.max(...String(r[i]||'').split('\n').map(l=>l.length),0)),0);
+    return Math.min(60,Math.max(i===2?34:h.length,longest)+6);
+  });
+  widths[0]=Math.max(widths[0],8);
+  widths[1]=Math.max(widths[1],22);
+  widths[3]=Math.max(widths[3],22);
+
+  const bd='<border><left style="thin"><color rgb="FF000000"/></left><right style="thin"><color rgb="FF000000"/></right><top style="thin"><color rgb="FF000000"/></top><bottom style="thin"><color rgb="FF000000"/></bottom><diagonal/></border>';
+  const styles='<?xml version="1.0" encoding="UTF-8" standalone="yes"?>'+
+  '<styleSheet xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main">'+
+  '<fonts count="3">'+
+    '<font><sz val="12"/><name val="Times New Roman"/></font>'+
+    '<font><b/><sz val="12"/><color rgb="FFFFFFFF"/><name val="Times New Roman"/></font>'+
+    '<font><b/><sz val="14"/><color rgb="FF12482A"/><name val="Times New Roman"/></font>'+
+  '</fonts>'+
+  '<fills count="10"><fill><patternFill patternType="none"/></fill><fill><patternFill patternType="gray125"/></fill>'+
+    colors.map(c=>'<fill><patternFill patternType="solid"><fgColor rgb="FF'+c[0]+'"/><bgColor indexed="64"/></patternFill></fill>').join('')+
+    colors.map(c=>'<fill><patternFill patternType="solid"><fgColor rgb="FF'+c[1]+'"/><bgColor indexed="64"/></patternFill></fill>').join('')+
+  '</fills>'+
+  '<borders count="2"><border><left/><right/><top/><bottom/><diagonal/></border>'+bd+'</borders>'+
+  '<cellStyleXfs count="1"><xf numFmtId="0" fontId="0" fillId="0" borderId="0"/></cellStyleXfs>'+
+  '<cellXfs count="10">'+
+    '<xf numFmtId="0" fontId="0" fillId="0" borderId="0" xfId="0"/>'+
+    '<xf numFmtId="0" fontId="2" fillId="0" borderId="0" xfId="0" applyFont="1" applyAlignment="1"><alignment horizontal="center" vertical="center" wrapText="1"/></xf>'+
+    colors.map((c,i)=>'<xf numFmtId="0" fontId="1" fillId="'+(2+i)+'" borderId="1" xfId="0" applyFont="1" applyFill="1" applyBorder="1" applyAlignment="1"><alignment horizontal="center" vertical="center" wrapText="1"/></xf>').join('')+
+    colors.map((c,i)=>'<xf numFmtId="'+(i===0?1:49)+'" fontId="0" fillId="'+(6+i)+'" borderId="1" xfId="0" applyNumberFormat="1" applyFont="1" applyFill="1" applyBorder="1" applyAlignment="1"><alignment horizontal="'+aligns[i]+'" vertical="center" wrapText="1"'+(aligns[i]==='left'?' indent="1"':'')+'/></xf>').join('')+
+  '</cellXfs>'+
+  '<cellStyles count="1"><cellStyle name="Normal" xfId="0" builtinId="0"/></cellStyles></styleSheet>';
+
+  const str=(ref,s,txt)=>'<c r="'+ref+'" s="'+s+'" t="inlineStr"><is><t xml:space="preserve">'+xmlEsc(txt)+'</t></is></c>';
+  let sd='';
+  sd+='<row r="1" ht="32" customHeight="1">'+str('A1',1,'BẢNG TỔNG HỢP 80 ĐỊA CHỈ TIN CẬY PHƯỜNG THANH KHÊ')+'</row>';
+  sd+='<row r="2" ht="48" customHeight="1">'+headers.map((h,i)=>str(colL[i]+'2',2+i,h)).join('')+'</row>';
+  rows.forEach((r,idx)=>{
+    const n=3+idx; let cells='';
+    const lines=Math.max(1,...[2,3].map(i=>String(r[i]||'').split('\n').length));
+    for(let i=0;i<4;i++){
+      const v=String(r[i]??'');
+      if(i===0){const num=parseInt(v,10)||idx+1; cells+='<c r="A'+n+'" s="6"><v>'+num+'</v></c>';}
+      else cells+=str(colL[i]+n,6+i,v);
+    }
+    sd+='<row r="'+n+'" ht="'+Math.max(24,lines*18+6)+'" customHeight="1">'+cells+'</row>';
+  });
+  const last=2+rows.length;
+  const sheet='<?xml version="1.0" encoding="UTF-8" standalone="yes"?>'+
+  '<worksheet xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main">'+
+  '<sheetPr><pageSetUpPr fitToPage="1"/></sheetPr><dimension ref="A1:D'+last+'"/>'+
+  '<sheetViews><sheetView workbookViewId="0"><pane ySplit="2" topLeftCell="A3" activePane="bottomLeft" state="frozen"/><selection pane="bottomLeft"/></sheetView></sheetViews>'+
+  '<sheetFormatPr defaultRowHeight="18"/>'+
+  '<cols>'+widths.map((w,i)=>'<col min="'+(i+1)+'" max="'+(i+1)+'" width="'+w+'" customWidth="1"/>').join('')+'</cols>'+
+  '<sheetData>'+sd+'</sheetData>'+
+  '<mergeCells count="1"><mergeCell ref="A1:D1"/></mergeCells>'+
+  '<pageMargins left="0.7" right="0.7" top="0.75" bottom="0.75" header="0.3" footer="0.3"/>'+
+  '<pageSetup paperSize="9" orientation="portrait" fitToWidth="1" fitToHeight="0"/></worksheet>';
+
+  const X='<?xml version="1.0" encoding="UTF-8" standalone="yes"?>';
+  return zipStore([
+    {name:'[Content_Types].xml',data:X+'<Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types"><Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/><Default Extension="xml" ContentType="application/xml"/><Override PartName="/xl/workbook.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet.main+xml"/><Override PartName="/xl/worksheets/sheet1.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.worksheet+xml"/><Override PartName="/xl/styles.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.styles+xml"/></Types>'},
+    {name:'_rels/.rels',data:X+'<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"><Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument" Target="xl/workbook.xml"/></Relationships>'},
+    {name:'xl/workbook.xml',data:X+'<workbook xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships"><bookViews><workbookView/></bookViews><sheets><sheet name="DiaChiTinCay" sheetId="1" r:id="rId1"/></sheets></workbook>'},
+    {name:'xl/_rels/workbook.xml.rels',data:X+'<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"><Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/worksheet" Target="worksheets/sheet1.xml"/><Relationship Id="rId2" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/styles" Target="styles.xml"/></Relationships>'},
+    {name:'xl/styles.xml',data:styles},
+    {name:'xl/worksheets/sheet1.xml',data:sheet}
+  ]);
+}
+
+function downloadExcel(){
+  if(!currentRows.length) return;
+  try{
+    const bytes=buildXlsx(['Stt','Chi hội','Tên, Chức vụ các thành viên Địa chỉ tin cậy','Ghi chú'],currentRows);
+    const d=new Date(), p=n=>String(n).padStart(2,'0');
+    const name=`80DiaChiTinCay_${d.getFullYear()}${p(d.getMonth()+1)}${p(d.getDate())}.xlsx`;
+    const blob=new Blob([bytes],{type:'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'});
+    if(navigator.msSaveOrOpenBlob){navigator.msSaveOrOpenBlob(blob,name);return;}
+    const a=document.createElement('a');
+    a.href=URL.createObjectURL(blob); a.download=name; a.style.display='none';
+    document.body.appendChild(a); a.click();
+    setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove()},4000);
+  }catch(err){
+    console.error(err); alert('Không tạo được file Excel: '+err.message);
+  }
+}
+
+function logout(){
+  adminPassword=''; currentRows=[];
+  document.getElementById('adminPanel').classList.remove('open');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+</script>
+</body>
+</html>
